@@ -30,14 +30,12 @@ class changeBall extends StatefulWidget {
 class _changeBallState extends State<changeBall> {
 
   int ballNum = 0;
-
   final fieldText = TextEditingController();
 
 
   void Ball(){
     print('Button Pressed');
     ballNum = Random().nextInt(5) + 1;
-    fieldText.clear();
   }
 
   void clearText() {
@@ -51,24 +49,26 @@ class _changeBallState extends State<changeBall> {
         const SizedBox(
           height: 15.0,
         ),
-        const Expanded(
-          flex: 3,
+        Container(
           child: TextField(
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               labelText: 'Question',
               hintText: 'Enter Your Question Here',
             ),
+            controller: fieldText,
           ),
         ),
-        Expanded(
-          flex: 1,
+        const SizedBox(
+          height: 5.0,
+        ),
+        Container(
             child: ElevatedButton(
               child: const Text(
                 'Submit',
                 style: TextStyle(
                   fontFamily: 'Abel',
-                  fontSize: 25.0,
+                  fontSize: 20.0,
                 ),
               ),
               onPressed: (){
@@ -79,7 +79,7 @@ class _changeBallState extends State<changeBall> {
               },
             ),),
         Expanded(
-          flex: 14,
+          flex: 1,
           child: Image.asset('images/Ball$ballNum.png'),),
       ],
     );
